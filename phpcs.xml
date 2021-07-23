@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="PhPgSql">
+	<rule ref="./vendor/forrest79/phpcs/Forrest79CodingStandard/ruleset.xml"/>
+
+	<rule ref="Forrest79CodingStandard.Classes.ForceFinalClass.MissingFinal">
+		<exclude-pattern>src</exclude-pattern>
+	</rule>
+
+	<rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable">
+		<exclude-pattern>src/Database/Repository.php</exclude-pattern>
+	</rule>
+
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+		<properties>
+			<property name="rootNamespaces" type="array" value="
+				src=>Forrest79,
+				examples=>App,
+			"/>
+		</properties>
+	</rule>
+</ruleset>
