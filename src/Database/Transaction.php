@@ -13,7 +13,7 @@ final class Transaction extends PhPgSql\Db\Transaction
 	{
 		$this->start($mode);
 		try {
-			$return = call_user_func($callback);
+			$return = call_user_func($callback, $this->connection);
 			$this->complete();
 			return $return;
 		} catch (\Throwable $e) {
