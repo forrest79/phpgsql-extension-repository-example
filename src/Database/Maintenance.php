@@ -18,6 +18,7 @@ class Maintenance
 	public function vacuumAnalyze(): void
 	{
 		foreach ($this->listTables() as $table) {
+			assert(is_string($table->name));
 			$this->vacuumAnalyzeTable($table->name);
 		}
 	}

@@ -63,7 +63,9 @@ class Query extends PhPgSql\Fluent\QueryExecute
 			->reset(self::PARAM_OFFSET)
 			->reset(self::PARAM_ORDERBY);
 
-		return (int) $query->select(['count(*)'])->fetchSingle(); // (int) is here just for PHPStan...
+		$count = $query->select(['count(*)'])->fetchSingle();
+		assert(is_int($count));
+		return $count;
 	}
 
 
