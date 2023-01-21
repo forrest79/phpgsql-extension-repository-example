@@ -6,7 +6,16 @@ use Forrest79\PhPgSql;
 
 final class Transaction extends PhPgSql\Db\Transaction
 {
+	private bool $useSavepoints;
+
 	private int $id = 0;
+
+
+	public function __construct(Connection $connection, bool $useSavepoints = FALSE)
+	{
+		parent::__construct($connection);
+		$this->useSavepoints = $useSavepoints;
+	}
 
 
 	public function execute(callable $callback, ?string $mode = NULL): mixed
@@ -27,9 +36,12 @@ final class Transaction extends PhPgSql\Db\Transaction
 	{
 		if ($this->connection->isInTransaction()) {
 			if ($mode !== NULL) {
-				throw new Exceptions\DatabaseException('You can\'t use mode for savepoints.');
+				throw new Exceptions\DatabaseException('You can\'t use mode for subtransactions.');
 			}
-			$this->savepoint($this->getSavepoint());
+
+			if ($this->useSavepoints) {
+				$this->savepoint($this->getSavepoint());
+			}
 		} else {
 			$this->begin($mode);
 		}
@@ -41,7 +53,9 @@ final class Transaction extends PhPgSql\Db\Transaction
 	{
 		--$this->id;
 		if ($this->id > 0) {
-			$this->releaseSavepoint($this->getSavepoint());
+			if ($this->useSavepoints) {
+				$this->releaseSavepoint($this->getSavepoint());
+			}
 		} else {
 			$this->commit();
 		}
@@ -52,7 +66,9 @@ final class Transaction extends PhPgSql\Db\Transaction
 	{
 		--$this->id;
 		if ($this->id > 0) {
-			$this->rollbackToSavepoint($this->getSavepoint());
+			if ($this->useSavepoints) {
+				$this->rollbackToSavepoint($this->getSavepoint());
+			}
 		} else {
 			$this->rollback();
 		}
