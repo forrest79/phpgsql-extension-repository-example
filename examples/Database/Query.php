@@ -10,9 +10,9 @@ use Forrest79\Database;
  */
 final class Query extends Database\Fluent\Query
 {
-	private ?Joins $innerJoins = NULL;
+	private Joins|NULL $innerJoins = NULL;
 
-	private ?Joins $leftJoins = NULL;
+	private Joins|NULL $leftJoins = NULL;
 
 
 
@@ -42,7 +42,7 @@ final class Query extends Database\Fluent\Query
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		?string $repositoryJoinColumn = NULL
+		string|NULL $repositoryJoinColumn = NULL
 	): self
 	{
 		return $this->createRepositoryJoin(
@@ -63,7 +63,7 @@ final class Query extends Database\Fluent\Query
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		?string $repositoryJoinColumn = NULL
+		string|NULL $repositoryJoinColumn = NULL
 	): self
 	{
 		return $this->createRepositoryJoin(
@@ -85,7 +85,7 @@ final class Query extends Database\Fluent\Query
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		?string $repositoryJoinColumn = NULL
+		string|NULL $repositoryJoinColumn = NULL
 	): self
 	{
 		[$tableName, $repositoryJoinColumn] = Database\Repository::meta($repositoryClass, $repositoryJoinColumn);

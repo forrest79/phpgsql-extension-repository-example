@@ -7,7 +7,7 @@ use App\Database\Row;
 use Forrest79\Database;
 
 /**
- * @method Query table(?string $alias = NULL)
+ * @method Query table(string|NULL $alias = NULL)
  * @method Row get(int $id, array $columns)
  * @method Row insertReturning(array $data, array $returning)
  * @method Row updateReturning(int $id, array $data, array $returning)
