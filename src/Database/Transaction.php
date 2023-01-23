@@ -36,7 +36,7 @@ final class Transaction extends PhPgSql\Db\Transaction
 	{
 		if ($this->connection->isInTransaction()) {
 			if ($mode !== NULL) {
-				throw new Exceptions\DatabaseException('You can\'t use mode for subtransactions.');
+				throw new Exceptions\DatabaseException('You can\'t use mode for inner transactions.');
 			}
 
 			if ($this->useSavepoints) {
