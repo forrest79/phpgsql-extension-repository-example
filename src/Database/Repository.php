@@ -15,7 +15,7 @@ abstract class Repository
 	}
 
 
-	public function table(?string $alias = NULL): Fluent\Query
+	public function table(string|NULL $alias = NULL): Fluent\Query
 	{
 		return $this->createQuery()->table(static::getTableName(), $alias);
 	}
@@ -24,7 +24,7 @@ abstract class Repository
 	/**
 	 * @param array<string> $columns
 	 */
-	public function get(int $id, array $columns): ?PhPgSql\Db\Row
+	public function get(int $id, array $columns): PhPgSql\Db\Row|NULL
 	{
 		return $this->table()
 			->select($columns)
@@ -138,9 +138,8 @@ abstract class Repository
 	 * @param class-string<self> $repositoryClass
 	 * @return array<string>
 	 */
-	public static function meta(string $repositoryClass, ?string $joinColumn): array
+	public static function meta(string $repositoryClass, string|NULL $joinColumn): array
 	{
-		/** @var self $repositoryClass */
 		return [
 			$repositoryClass::getTableName(),
 			$joinColumn ?? $repositoryClass::getDefaultJoinColumn(),
@@ -148,7 +147,7 @@ abstract class Repository
 	}
 
 
-	protected static function withAlias(string $column, ?string $alias): string
+	protected static function withAlias(string $column, string|NULL $alias): string
 	{
 		return Sql::withAlias($column, $alias);
 	}

@@ -18,7 +18,7 @@ final class Transaction extends PhPgSql\Db\Transaction
 	}
 
 
-	public function execute(callable $callback, ?string $mode = NULL): mixed
+	public function execute(callable $callback, string|NULL $mode = NULL): mixed
 	{
 		$this->start($mode);
 		try {
@@ -32,7 +32,7 @@ final class Transaction extends PhPgSql\Db\Transaction
 	}
 
 
-	private function start(?string $mode = NULL): void
+	private function start(string|NULL $mode = NULL): void
 	{
 		if ($this->connection->isInTransaction()) {
 			if ($mode !== NULL) {

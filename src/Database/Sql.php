@@ -7,7 +7,7 @@ use Forrest79\PhPgSql\Db;
 abstract class Sql
 {
 
-	public static function withAlias(string $column, ?string $alias): string
+	public static function withAlias(string $column, string|NULL $alias): string
 	{
 		return ($alias === '') || ($alias === NULL)
 			? $column

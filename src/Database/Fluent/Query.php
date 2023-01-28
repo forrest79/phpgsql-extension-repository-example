@@ -9,7 +9,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 {
 	private Database\Connection $connection;
 
-	private ?Database\Repository $repository = NULL;
+	private Database\Repository|NULL $repository = NULL;
 
 
 	public function __construct(PhPgSql\Fluent\QueryBuilder $queryBuilder, Database\Connection $connection)
@@ -45,7 +45,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 	/**
 	 * @return static
 	 */
-	public function wherePrimary(mixed $value, ?string $tableAlias = NULL): self
+	public function wherePrimary(mixed $value, string|NULL $tableAlias = NULL): self
 	{
 		return $this->where(Database\Sql::withAlias($this->getRepository()::getPrimaryKey(), $tableAlias), $value);
 	}

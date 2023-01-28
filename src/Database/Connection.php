@@ -6,7 +6,7 @@ use Forrest79\PhPgSql;
 
 class Connection extends PhPgSql\Fluent\Connection
 {
-	private ?Transaction $transaction = NULL;
+	private Transaction|NULL $transaction = NULL;
 
 
 	/**
