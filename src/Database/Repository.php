@@ -44,7 +44,7 @@ abstract class Repository
 
 
 	/**
-	 * @param array<mixed> $data
+	 * @param array<string, mixed> $data
 	 * @param array<string> $returning
 	 */
 	public function insertReturning(array $data, array $returning): PhPgSql\Db\Row
@@ -58,7 +58,7 @@ abstract class Repository
 
 
 	/**
-	 * @param array<mixed> $data
+	 * @param array<string, mixed> $data
 	 */
 	public function update(int $id, array $data): PhPgSql\Db\Result
 	{
@@ -67,7 +67,7 @@ abstract class Repository
 
 
 	/**
-	 * @param array<mixed> $data
+	 * @param array<string, mixed> $data
 	 * @param array<string> $returning
 	 */
 	public function updateReturning(int $id, array $data, array $returning): PhPgSql\Db\Row
@@ -131,19 +131,6 @@ abstract class Repository
 	public static function getDefaultJoinColumn(): string
 	{
 		throw new Exceptions\DatabaseException(sprintf('%s repository has no default join column', static::class));
-	}
-
-
-	/**
-	 * @param class-string<self> $repositoryClass
-	 * @return array<string>
-	 */
-	public static function meta(string $repositoryClass, string|NULL $joinColumn): array
-	{
-		return [
-			$repositoryClass::getTableName(),
-			$joinColumn ?? $repositoryClass::getDefaultJoinColumn(),
-		];
 	}
 
 

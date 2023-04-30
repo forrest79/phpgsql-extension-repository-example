@@ -35,7 +35,7 @@ final class Query extends Database\Fluent\Query
 
 
 	/**
-	 * @param class-string $repositoryClass
+	 * @param class-string<Database\Repository> $repositoryClass
 	 * @return static
 	 */
 	public function joinRepository(
@@ -56,7 +56,7 @@ final class Query extends Database\Fluent\Query
 
 
 	/**
-	 * @param class-string $repositoryClass
+	 * @param class-string<Database\Repository> $repositoryClass
 	 * @return static
 	 */
 	public function leftJoinRepository(
@@ -77,7 +77,7 @@ final class Query extends Database\Fluent\Query
 
 
 	/**
-	 * @param class-string $repositoryClass
+	 * @param class-string<Database\Repository> $repositoryClass
 	 * @return static
 	 */
 	private function createRepositoryJoin(
@@ -88,17 +88,14 @@ final class Query extends Database\Fluent\Query
 		string|NULL $repositoryJoinColumn = NULL
 	): self
 	{
-		[$tableName, $repositoryJoinColumn] = Database\Repository::meta($repositoryClass, $repositoryJoinColumn);
-		$params = [
-			$tableName,
-			$repositoryAlias,
-			sprintf('%s.%s = %s', $repositoryAlias, $repositoryJoinColumn, $joinColumn),
-		];
+		$tableName = $repositoryClass::getTableName();
+		$onCondition = sprintf('%s.%s = %s', $repositoryAlias, $repositoryJoinColumn ?? $repositoryClass::getDefaultJoinColumn(), $joinColumn);
 
 		if ($joinType === Joins::INNER_JOIN) {
-			return $this->innerJoin(...$params);
+			return $this->innerJoin($tableName, $repositoryAlias, $onCondition);
 		}
-		return $this->leftJoin(...$params);
+
+		return $this->leftJoin($tableName, $repositoryAlias, $onCondition);
 	}
 
 }

@@ -2,7 +2,7 @@
 
 namespace Forrest79\Database\Exceptions;
 
-class DatabaseException extends \RuntimeException
+final class DatabaseException extends \RuntimeException
 {
 
 }

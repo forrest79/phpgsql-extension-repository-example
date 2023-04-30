@@ -26,7 +26,7 @@ final class Joins
 
 
 	/**
-	 * @param class-string $repositoryClass
+	 * @param class-string<Models\Repository> $repositoryClass
 	 */
 	private function joinRepository(
 		string $repositoryClass,

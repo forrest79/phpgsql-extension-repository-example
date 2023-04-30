@@ -42,10 +42,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 	}
 
 
-	/**
-	 * @return static
-	 */
-	public function wherePrimary(mixed $value, string|NULL $tableAlias = NULL): self
+	public function wherePrimary(mixed $value, string|NULL $tableAlias = NULL): static
 	{
 		return $this->where(Database\Sql::withAlias($this->getRepository()::getPrimaryKey(), $tableAlias), $value);
 	}
@@ -86,7 +83,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 	 * @param string $column !IMPORTANT: you need to be sure, that here can't be SQL injection, this parameter is directly injected to SQL query
 	 * @param array<int> $keys
 	 */
-	public function orderByValues(string $column, array $keys): self
+	public function orderByValues(string $column, array $keys): static
 	{
 		if ($keys === []) {
 			throw new Database\Exceptions\DatabaseException('Keys to sort against in array_position can not be empty.');
