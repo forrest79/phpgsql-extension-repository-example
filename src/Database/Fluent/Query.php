@@ -97,4 +97,10 @@ class Query extends PhPgSql\Fluent\QueryExecute
 		));
 	}
 
+
+	public function fetchSingleValue(): Database\Value
+	{
+		return new Database\Value($this->fetchSingle());
+	}
+
 }

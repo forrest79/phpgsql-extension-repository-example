@@ -38,6 +38,7 @@ $newUser = $userRepository->get($newId, ['nick']);
 assert($newUser instanceof Database\Row);
 
 var_dump($newUser->nick);
+var_dump($newUser->value('nick')->getString());
 
 // update
 

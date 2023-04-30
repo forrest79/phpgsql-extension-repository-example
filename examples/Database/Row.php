@@ -2,9 +2,9 @@
 
 namespace App\Database;
 
-use Forrest79\PhPgSql\Db;
+use Forrest79\Database;
 
-final class Row extends Db\Row
+final class Row extends Database\Row
 {
 
 }
