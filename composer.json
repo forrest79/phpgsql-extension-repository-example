@@ -15,7 +15,8 @@
 		"php": "^8.0"
 	},
 	"require-dev": {
-		"forrest79/phpcs": "^1.1",
+		"forrest79/phpcs": "^1.2",
+		"forrest79/phpcs-ignores": "^0.3",
 		"forrest79/phpgsql-phpstan": "^1.5",
 		"phpstan/phpstan": "^1.10",
 		"phpstan/phpstan-strict-rules": "^1.5"
@@ -27,7 +28,7 @@
 		}
 	},
 	"scripts": {
-		"phpcs": "vendor/bin/phpcs -s src",
+		"phpcs": "vendor/bin/phpcs --bootstrap=vendor/forrest79/phpcs-ignores/src/bootstrap.php -s src",
 		"phpstan": "vendor/bin/phpstan analyse src"
 	},
 	"config": {
