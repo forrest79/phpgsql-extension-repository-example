@@ -87,12 +87,12 @@ final class Value
 
 
 	/**
-	 * @return array<int|string, mixed>
+	 * @return array<int|string, mixed>|NULL
 	 */
 	public function getArrayNullable(): array|NULL
 	{
 		assert($this->value === NULL || is_array($this->value));
-		/** @phpstan-var array<int|string, mixed> */
+		/** @phpstan-var array<int|string, mixed>|NULL */
 		return $this->value;
 	}
 

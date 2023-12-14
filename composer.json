@@ -15,9 +15,9 @@
 		"php": "^8.0"
 	},
 	"require-dev": {
-		"forrest79/phpcs": "^1.2",
-		"forrest79/phpcs-ignores": "^0.3",
-		"forrest79/phpgsql-phpstan": "^1.5",
+		"forrest79/phpcs": "^1.5",
+		"forrest79/phpcs-ignores": "^0.5",
+		"forrest79/phpgsql-phpstan": "^1.7",
 		"phpstan/phpstan": "^1.10",
 		"phpstan/phpstan-strict-rules": "^1.5"
 	},
