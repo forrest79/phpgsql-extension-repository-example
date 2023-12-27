@@ -19,4 +19,15 @@ class Row extends Db\Row
 		return $this->valueObjects[$column];
 	}
 
+
+	/**
+	 * @template T of FromRow
+	 * @param class-string<T> $class
+	 * @return T
+	 */
+	public function asClass(string $class): mixed
+	{
+		return $class::fromDatabaseRow($this);
+	}
+
 }

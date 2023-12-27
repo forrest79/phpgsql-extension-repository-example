@@ -29,3 +29,9 @@ ignoreErrors:
 		count: 1
 		path: src/Database/Row.php
 
+	-
+		sniff: Squiz.Scope.MethodScope.Missing
+		message: Visibility must be declared on method "fromDatabaseRow"
+		count: 1
+		path: src/Database/FromRow.php
+

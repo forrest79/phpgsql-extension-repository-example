@@ -81,7 +81,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 
 	/**
 	 * @param string $column !IMPORTANT: you need to be sure, that here can't be SQL injection, this parameter is directly injected to SQL query
-	 * @param array<int> $keys
+	 * @param list<int> $keys
 	 */
 	public function orderByValues(string $column, array $keys): static
 	{

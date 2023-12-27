@@ -51,3 +51,13 @@ foreach ($queryWrap as $row) {
 	assert($row instanceof Database\Row);
 	var_dump($row->toArray());
 }
+
+// fromDatabaseRow - for example Entity
+
+$queryUsers = $userRepository->table()
+	->select(['id', 'nick', 'active']);
+
+foreach ($queryUsers as $user) {
+	assert($user instanceof Database\Row);
+	var_dump($user->asClass(App\Models\UserEntity::class));
+}
