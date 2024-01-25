@@ -14,8 +14,8 @@ class Query extends PhPgSql\Fluent\QueryExecute
 
 	public function __construct(PhPgSql\Fluent\QueryBuilder $queryBuilder, Database\Connection $connection)
 	{
-		$this->connection = $connection;
 		parent::__construct($queryBuilder, $connection);
+		$this->connection = $connection;
 	}
 
 
@@ -25,7 +25,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 	}
 
 
-	public function setRepository(Database\Repository $repository): self
+	public function setRepository(Database\Repository $repository): static
 	{
 		$this->repository = $repository;
 		return $this;

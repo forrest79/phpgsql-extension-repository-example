@@ -10,7 +10,7 @@ final class RowFactory implements Db\RowFactory
 	/**
 	 * @param array<string, mixed> $rawValues
 	 */
-	public function createRow(Db\ColumnValueParser $columnValueParser, array $rawValues): Db\Row
+	public function createRow(Db\ColumnValueParser $columnValueParser, array $rawValues): Row
 	{
 		return new Row($columnValueParser, $rawValues);
 	}

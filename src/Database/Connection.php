@@ -9,10 +9,7 @@ class Connection extends PhPgSql\Fluent\Connection
 	private Transaction|NULL $transaction = NULL;
 
 
-	/**
-	 * @return Transaction
-	 */
-	public function transaction(): PhPgSql\Db\Transaction
+	public function transaction(): Transaction
 	{
 		if ($this->transaction === NULL) {
 			$this->transaction = new Transaction($this);
@@ -21,10 +18,7 @@ class Connection extends PhPgSql\Fluent\Connection
 	}
 
 
-	/**
-	 * @return Fluent\Query
-	 */
-	public function createQuery(): PhPgSql\Fluent\QueryExecute
+	public function createQuery(): Fluent\Query
 	{
 		return new Fluent\Query($this->getQueryBuilder(), $this);
 	}

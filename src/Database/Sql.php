@@ -29,6 +29,7 @@ abstract class Sql
 
 	public static function parameters(string $value, mixed ...$params): Db\Sql\Expression
 	{
+		assert(array_is_list($params));
 		return new Db\Sql\Expression($value, $params);
 	}
 

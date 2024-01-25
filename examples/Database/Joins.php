@@ -48,17 +48,6 @@ final class Joins
 	}
 
 
-	/* @todo prepared for specific joins
-	private function join(...$params): Query
-	{
-		if ($this->type->value() === PmgDev\Database\Fluent\JoinType::INNER_JOIN) {
-			return $this->query->innerJoin(...$params);
-		}
-		return $this->query->leftJoin(...$params);
-	}
-	*/
-
-
 	public function departments(string $alias, string $joinColumn): Query
 	{
 		return $this->joinRepository(

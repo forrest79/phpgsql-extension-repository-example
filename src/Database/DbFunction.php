@@ -16,10 +16,11 @@ class DbFunction
 
 
 	/**
-	 * @param string|int|float|bool|array<mixed>|NULL ...$params
+	 * @param string|int|float|bool|list<mixed>|NULL ...$params
 	 */
 	public function run(string $function, mixed ...$params): PhPgSql\Db\Result
 	{
+		assert(array_is_list($params));
 		return $this->connection->queryArgs(
 			sprintf('SELECT %s(%s)', $function, implode(', ', array_fill(0, count($params), '?'))),
 			$params,

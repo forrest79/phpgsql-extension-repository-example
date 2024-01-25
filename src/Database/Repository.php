@@ -22,7 +22,7 @@ abstract class Repository
 
 
 	/**
-	 * @param array<string> $columns
+	 * @param list<string> $columns
 	 */
 	public function get(int $id, array $columns): PhPgSql\Db\Row|NULL
 	{
@@ -45,7 +45,7 @@ abstract class Repository
 
 	/**
 	 * @param array<string, mixed> $data
-	 * @param array<string> $returning
+	 * @param list<string> $returning
 	 */
 	public function insertReturning(array $data, array $returning): PhPgSql\Db\Row
 	{
@@ -68,7 +68,7 @@ abstract class Repository
 
 	/**
 	 * @param array<string, mixed> $data
-	 * @param array<string> $returning
+	 * @param list<string> $returning
 	 */
 	public function updateReturning(int $id, array $data, array $returning): PhPgSql\Db\Row
 	{
@@ -87,7 +87,7 @@ abstract class Repository
 
 
 	/**
-	 * @param array<string> $returning
+	 * @param list<string> $returning
 	 */
 	public function deleteReturning(int $id, array $returning): PhPgSql\Db\Row
 	{

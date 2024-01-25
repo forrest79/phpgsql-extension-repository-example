@@ -15,7 +15,7 @@ $query = $userRepository->table('u')
 	->select(['u.nick', 'department_name' => 'd.name'])
 	->joins()->userDepartments('ud', 'u.id')
 	->joins()->departments('d', 'ud.department_id')
-	->where('d.active = TRUE');
+	->where('d.active', TRUE);
 
 var_dump($query->fetchPairs('nick', 'department_name'));
 
@@ -25,6 +25,6 @@ $query = $userRepository->table('u')
 	->select(['u.nick', 'department_name' => 'd.name'])
 	->joinRepository(Models\UserDepartment::class, 'ud', 'u.id')
 	->joinRepository(Models\Department::class, 'd', 'ud.department_id')
-	->where('d.active = TRUE');
+	->where('d.active', TRUE);
 
 var_dump($query->fetchPairs('nick', 'department_name'));

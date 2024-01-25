@@ -8,10 +8,7 @@ use Forrest79\PhPgSQl;
 final class Connection extends Database\Connection
 {
 
-	/**
-	 * @return Query
-	 */
-	public function createQuery(): PhPgSql\Fluent\QueryExecute
+	public function createQuery(): Query
 	{
 		return new Query($this->getQueryBuilder(), $this);
 	}
