@@ -34,9 +34,14 @@ class Maintenance
 	}
 
 
-	private function listTables(): Db\Result
+	/**
+	 * @return iterable<Db\Row>
+	 */
+	private function listTables(): iterable
 	{
-		return $this->connection->query('SELECT table_schema || \'.\' || table_name AS name FROM information_schema.tables WHERE table_schema IN (\'public\', \'audit\') ORDER BY table_schema, table_name');
+		return $this->connection
+			->query('SELECT table_schema || \'.\' || table_name AS name FROM information_schema.tables WHERE table_schema IN (\'public\', \'audit\') ORDER BY table_schema, table_name')
+			->fetchIterator();
 	}
 
 }
