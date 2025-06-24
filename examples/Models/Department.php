@@ -10,10 +10,4 @@ final class Department extends Repository
 		return 'departments';
 	}
 
-
-	public static function getDefaultJoinColumn(): string
-	{
-		return 'id';
-	}
-
 }

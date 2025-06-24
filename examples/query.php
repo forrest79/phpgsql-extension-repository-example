@@ -42,7 +42,7 @@ echo PHP_EOL . '> wrap()' . PHP_EOL . PHP_EOL;
 
 $queryWrap = $userRepository->table('u')
 	->select(['u.nick', 'rn' => 'row_number() OVER(PARTITION BY ud.department_id ORDER BY u.nick)'])
-	->joins()->userDepartments('ud', 'u.id')
+	->joins()->userDepartmentsByUserId('ud', 'u.id')
 	->wrap('x')
 	->select(['x.nick'])
 	->where('x.rn', 1);

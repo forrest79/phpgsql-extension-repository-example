@@ -128,12 +128,6 @@ abstract class Repository
 	}
 
 
-	public static function getDefaultJoinColumn(): string
-	{
-		throw new Exceptions\DatabaseException(sprintf('%s repository has no default join column', static::class));
-	}
-
-
 	protected static function withAlias(string $column, string|NULL $alias): string
 	{
 		return Sql::withAlias($column, $alias);

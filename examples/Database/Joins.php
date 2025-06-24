@@ -58,12 +58,13 @@ final class Joins
 	}
 
 
-	public function userDepartments(string $alias, string $joinColumn): Query
+	public function userDepartmentsByUserId(string $alias, string $joinColumn): Query
 	{
 		return $this->joinRepository(
 			Models\UserDepartment::class,
 			$alias,
 			$joinColumn,
+			'user_id',
 		);
 	}
 
