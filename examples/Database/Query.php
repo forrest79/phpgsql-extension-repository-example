@@ -88,7 +88,12 @@ final class Query extends Database\Fluent\Query
 	): static
 	{
 		$tableName = $repositoryClass::getTableName();
-		$onCondition = sprintf('%s.%s = %s', $repositoryAlias, $repositoryJoinColumn ?? $repositoryClass::getDefaultJoinColumn(), $joinColumn);
+		$onCondition = sprintf(
+			'%s.%s = %s',
+			$repositoryAlias,
+			$repositoryJoinColumn ?? $repositoryClass::getPrimaryKey(),
+			$joinColumn,
+		);
 
 		if ($joinType === Joins::INNER_JOIN) {
 			return $this->innerJoin($tableName, $repositoryAlias, $onCondition);

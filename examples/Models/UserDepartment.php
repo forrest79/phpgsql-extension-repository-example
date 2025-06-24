@@ -10,10 +10,4 @@ final class UserDepartment extends Repository
 		return 'user_departments';
 	}
 
-
-	public static function getDefaultJoinColumn(): string
-	{
-		return 'user_id';
-	}
-
 }

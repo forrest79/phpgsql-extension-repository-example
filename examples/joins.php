@@ -13,7 +13,7 @@ $userRepository = new Models\User($connection);
 
 $query = $userRepository->table('u')
 	->select(['u.nick', 'department_name' => 'd.name'])
-	->joins()->userDepartments('ud', 'u.id')
+	->joins()->userDepartmentsByUserId('ud', 'u.id')
 	->joins()->departments('d', 'ud.department_id')
 	->where('d.active', TRUE);
 

@@ -10,10 +10,4 @@ final class User extends Repository
 		return 'users';
 	}
 
-
-	public static function getDefaultJoinColumn(): string
-	{
-		return 'id';
-	}
-
 }
