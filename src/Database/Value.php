@@ -26,9 +26,9 @@ final class Value
 	}
 
 
-	public function getIntNullable(): int|NULL
+	public function getIntNullable(): int|null
 	{
-		assert($this->value === NULL || is_int($this->value));
+		assert($this->value === null || is_int($this->value));
 		return $this->value;
 	}
 
@@ -40,9 +40,9 @@ final class Value
 	}
 
 
-	public function getFloatNullable(): float|NULL
+	public function getFloatNullable(): float|null
 	{
-		assert($this->value === NULL || is_float($this->value));
+		assert($this->value === null || is_float($this->value));
 		return $this->value;
 	}
 
@@ -54,9 +54,9 @@ final class Value
 	}
 
 
-	public function getBoolNullable(): bool|NULL
+	public function getBoolNullable(): bool|null
 	{
-		assert($this->value === NULL || is_bool($this->value));
+		assert($this->value === null || is_bool($this->value));
 		return $this->value;
 	}
 
@@ -68,9 +68,9 @@ final class Value
 	}
 
 
-	public function getStringNullable(): string|NULL
+	public function getStringNullable(): string|null
 	{
-		assert($this->value === NULL || is_string($this->value));
+		assert($this->value === null || is_string($this->value));
 		return $this->value;
 	}
 
@@ -87,12 +87,12 @@ final class Value
 
 
 	/**
-	 * @return array<int|string, mixed>|NULL
+	 * @return array<int|string, mixed>|null
 	 */
-	public function getArrayNullable(): array|NULL
+	public function getArrayNullable(): array|null
 	{
-		assert($this->value === NULL || is_array($this->value));
-		/** @phpstan-var array<int|string, mixed>|NULL */
+		assert($this->value === null || is_array($this->value));
+		/** @phpstan-var array<int|string, mixed>|null */
 		return $this->value;
 	}
 
@@ -108,11 +108,11 @@ final class Value
 
 
 	/**
-	 * @return list<mixed>|NULL
+	 * @return list<mixed>|null
 	 */
-	public function getListNullable(): array|NULL
+	public function getListNullable(): array|null
 	{
-		assert($this->value === NULL || (is_array($this->value) && array_is_list($this->value)));
+		assert($this->value === null || (is_array($this->value) && array_is_list($this->value)));
 		return $this->value;
 	}
 
@@ -124,9 +124,9 @@ final class Value
 	}
 
 
-	public function getDateTimeNullable(): \DateTimeImmutable|NULL
+	public function getDateTimeNullable(): \DateTimeImmutable|null
 	{
-		assert($this->value === NULL || $this->value instanceof \DateTimeImmutable);
+		assert($this->value === null || $this->value instanceof \DateTimeImmutable);
 		return $this->value;
 	}
 

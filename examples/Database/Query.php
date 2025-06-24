@@ -5,20 +5,20 @@ namespace App\Database;
 use Forrest79\Database;
 
 /**
- * @method Row|NULL fetch()
+ * @method Row|null fetch()
  * @method list<Row> fetchAll()
  */
 final class Query extends Database\Fluent\Query
 {
-	private Joins|NULL $innerJoins = NULL;
+	private Joins|null $innerJoins = null;
 
-	private Joins|NULL $leftJoins = NULL;
+	private Joins|null $leftJoins = null;
 
 
 
 	public function joins(): Joins
 	{
-		if ($this->innerJoins === NULL) {
+		if ($this->innerJoins === null) {
 			$this->innerJoins = new Joins($this, Joins::INNER_JOIN);
 		}
 
@@ -28,7 +28,7 @@ final class Query extends Database\Fluent\Query
 
 	public function leftJoins(): Joins
 	{
-		if ($this->leftJoins === NULL) {
+		if ($this->leftJoins === null) {
 			$this->leftJoins = new Joins($this, Joins::LEFT_JOIN);
 		}
 
@@ -43,7 +43,7 @@ final class Query extends Database\Fluent\Query
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		string|NULL $repositoryJoinColumn = NULL
+		string|null $repositoryJoinColumn = null
 	): static
 	{
 		return $this->createRepositoryJoin(
@@ -63,7 +63,7 @@ final class Query extends Database\Fluent\Query
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		string|NULL $repositoryJoinColumn = NULL
+		string|null $repositoryJoinColumn = null
 	): static
 	{
 		return $this->createRepositoryJoin(
@@ -84,7 +84,7 @@ final class Query extends Database\Fluent\Query
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		string|NULL $repositoryJoinColumn = NULL
+		string|null $repositoryJoinColumn = null
 	): static
 	{
 		$tableName = $repositoryClass::getTableName();

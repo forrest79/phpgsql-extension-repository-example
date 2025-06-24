@@ -16,7 +16,7 @@ final class Joins
 
 	public function __construct(Query $query, int $joinType)
 	{
-		if (!in_array($joinType, [self::INNER_JOIN, self::LEFT_JOIN], TRUE)) {
+		if (!in_array($joinType, [self::INNER_JOIN, self::LEFT_JOIN], true)) {
 			throw new \RuntimeException(sprintf('Bad $joinType: %d.', $joinType));
 		}
 
@@ -32,7 +32,7 @@ final class Joins
 		string $repositoryClass,
 		string $repositoryAlias,
 		string $joinColumn,
-		?string $repositoryJoinColumn = NULL
+		?string $repositoryJoinColumn = null
 	): Query
 	{
 		if ($this->joinType === self::INNER_JOIN) {

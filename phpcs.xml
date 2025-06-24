@@ -4,10 +4,10 @@
 
 	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
 		<properties>
-			<property name="rootNamespaces" type="array" value="
-				src=>Forrest79,
-				examples=>App,
-			"/>
+			<property name="rootNamespaces" type="array">
+				<element key="src" value="Forrest79"/>
+				<element key="examples" value="App"/>
+			</property>
 		</properties>
 	</rule>
 </ruleset>

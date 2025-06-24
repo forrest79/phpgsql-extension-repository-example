@@ -15,7 +15,7 @@ abstract class Repository
 	}
 
 
-	public function table(string|NULL $alias = NULL): Fluent\Query
+	public function table(string|null $alias = null): Fluent\Query
 	{
 		return $this->createQuery()->table(static::getTableName(), $alias);
 	}
@@ -24,7 +24,7 @@ abstract class Repository
 	/**
 	 * @param list<string> $columns
 	 */
-	public function get(int $id, array $columns): PhPgSql\Db\Row|NULL
+	public function get(int $id, array $columns): PhPgSql\Db\Row|null
 	{
 		return $this->table()
 			->select($columns)
@@ -50,7 +50,7 @@ abstract class Repository
 	public function insertReturning(array $data, array $returning): PhPgSql\Db\Row
 	{
 		$row = $this->table()->values($data)->returning($returning)->fetch();
-		if ($row === NULL) {
+		if ($row === null) {
 			throw new Exceptions\DatabaseException('No row was inserted.');
 		}
 		return $row;
@@ -73,7 +73,7 @@ abstract class Repository
 	public function updateReturning(int $id, array $data, array $returning): PhPgSql\Db\Row
 	{
 		$row = $this->table()->set($data)->wherePrimary($id)->returning($returning)->fetch();
-		if ($row === NULL) {
+		if ($row === null) {
 			throw new Exceptions\DatabaseException('No row was updated.');
 		}
 		return $row;
@@ -92,7 +92,7 @@ abstract class Repository
 	public function deleteReturning(int $id, array $returning): PhPgSql\Db\Row
 	{
 		$row = $this->table()->delete()->wherePrimary($id)->returning($returning)->fetch();
-		if ($row === NULL) {
+		if ($row === null) {
 			throw new Exceptions\DatabaseException('No row was deleted.');
 		}
 		return $row;
@@ -128,7 +128,7 @@ abstract class Repository
 	}
 
 
-	protected static function withAlias(string $column, string|NULL $alias): string
+	protected static function withAlias(string $column, string|null $alias): string
 	{
 		return Sql::withAlias($column, $alias);
 	}

@@ -18,13 +18,13 @@ echo '> insert:' . PHP_EOL . PHP_EOL;
 var_dump($userRepository->insert([
 	'nick' => 'Test1',
 	'inserted_datetime' => Sql::now(),
-	'active' => TRUE,
+	'active' => true,
 ])->getAffectedRows());
 
 $newId = $userRepository->insertReturning([
 	'nick' => 'Test2',
 	'inserted_datetime' => Sql::now(),
-	'active' => TRUE,
+	'active' => true,
 	'age' => 29,
 ], ['id'])->id;
 

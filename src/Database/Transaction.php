@@ -11,14 +11,14 @@ final class Transaction extends PhPgSql\Db\Transaction
 	private int $id = 0;
 
 
-	public function __construct(Connection $connection, bool $useSavepoints = FALSE)
+	public function __construct(Connection $connection, bool $useSavepoints = false)
 	{
 		parent::__construct($connection);
 		$this->useSavepoints = $useSavepoints;
 	}
 
 
-	public function execute(callable $callback, string|NULL $mode = NULL): mixed
+	public function execute(callable $callback, string|null $mode = null): mixed
 	{
 		$this->start($mode);
 		try {
@@ -32,10 +32,10 @@ final class Transaction extends PhPgSql\Db\Transaction
 	}
 
 
-	private function start(string|NULL $mode = NULL): void
+	private function start(string|null $mode = null): void
 	{
 		if ($this->connection->isInTransaction()) {
-			if ($mode !== NULL) {
+			if ($mode !== null) {
 				throw new Exceptions\DatabaseException('You can\'t use mode for inner transactions.');
 			}
 

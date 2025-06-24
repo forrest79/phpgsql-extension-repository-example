@@ -9,7 +9,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 {
 	private Database\Connection $connection;
 
-	private Database\Repository|NULL $repository = NULL;
+	private Database\Repository|null $repository = null;
 
 
 	public function __construct(PhPgSql\Fluent\QueryBuilder $queryBuilder, Database\Connection $connection)
@@ -34,7 +34,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 
 	protected function getRepository(): Database\Repository
 	{
-		if ($this->repository === NULL) {
+		if ($this->repository === null) {
 			throw new Database\Exceptions\DatabaseException('No repository is set');
 		}
 
@@ -42,7 +42,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 	}
 
 
-	public function wherePrimary(mixed $value, string|NULL $tableAlias = NULL): static
+	public function wherePrimary(mixed $value, string|null $tableAlias = null): static
 	{
 		return $this->where(Database\Sql::withAlias($this->getRepository()::getPrimaryKey(), $tableAlias), $value);
 	}

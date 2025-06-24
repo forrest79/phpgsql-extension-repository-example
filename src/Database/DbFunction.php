@@ -16,7 +16,7 @@ class DbFunction
 
 
 	/**
-	 * @param string|int|float|bool|list<mixed>|NULL ...$params
+	 * @param string|int|float|bool|list<mixed>|null ...$params
 	 */
 	public function run(string $function, mixed ...$params): PhPgSql\Db\Result
 	{

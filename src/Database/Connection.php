@@ -6,12 +6,12 @@ use Forrest79\PhPgSql;
 
 class Connection extends PhPgSql\Fluent\Connection
 {
-	private Transaction|NULL $transaction = NULL;
+	private Transaction|null $transaction = null;
 
 
 	public function transaction(): Transaction
 	{
-		if ($this->transaction === NULL) {
+		if ($this->transaction === null) {
 			$this->transaction = new Transaction($this);
 		}
 		return $this->transaction;

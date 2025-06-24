@@ -19,4 +19,4 @@ $transaction->execute(function () use ($connection, $userRepository, $transactio
 	});
 });
 
-var_dump($userRepository->table()->select(['id'])->orderBy('id')->fetchPairs(NULL, 'id'));
+var_dump($userRepository->table()->select(['id'])->orderBy('id')->fetchPairs(null, 'id'));
