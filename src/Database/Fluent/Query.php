@@ -68,7 +68,7 @@ class Query extends PhPgSql\Fluent\QueryExecute
 	public function exists(): bool
 	{
 		return (bool) $this->connection
-			->query('SELECT EXISTS (?)', $this->select(['TRUE'])->createSqlQuery())
+			->query('SELECT EXISTS (?)', $this->select(['TRUE']))
 			->fetchSingle();
 	}
 

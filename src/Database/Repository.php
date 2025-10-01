@@ -101,7 +101,7 @@ abstract class Repository
 
 	public function getNextId(): int
 	{
-		$nextId = $this->connection()->select([sprintf('nextval(\'%s_id_seq\')', static::getTableName())])->fetchSingle();
+		$nextId = $this->connection()->createQuery()->select([sprintf('nextval(\'%s_id_seq\')', static::getTableName())])->fetchSingle();
 		assert(is_int($nextId));
 		return $nextId;
 	}
